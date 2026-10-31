@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "751333232502",
+    "project_id": "dan-chat-b61d0",
+    "storage_bucket": "dan-chat-b61d0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751333232502:android:e564b9b9c95490860ab457",
+        "android_client_info": {
+          "package_name": "com.danchat.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwLqSLNJH22_3goLGRvmML2tPeC5UXSgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
