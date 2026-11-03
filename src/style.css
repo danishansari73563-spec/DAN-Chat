@@ -658,3 +658,52 @@ header button:hover {
     height: 40px;
   }
 }
+/* ===== WHATSAPP STYLE MESSAGES ===== */
+.msgs {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px 10px;
+}
+
+.bubble {
+  display: block;
+  width: fit-content;
+  max-width: 78%;
+  padding: 7px 10px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.35;
+  position: relative;
+  word-wrap: break-word;
+  box-shadow: 0 1px 1px rgba(0,0,0,.12);
+}
+
+/* Meri message: RIGHT side */
+.bubble.me {
+  align-self: flex-end !important;
+  margin-left: auto;
+  background: var(--me);
+  border-top-right-radius: 3px;
+}
+
+/* Samne wale ki message: LEFT side */
+.bubble.them {
+  align-self: flex-start !important;
+  margin-right: auto;
+  background: var(--them);
+  border-top-left-radius: 3px;
+}
+
+.bubble .t {
+  position: absolute;
+  right: 8px;
+  bottom: 3px;
+  font-size: 11px;
+  color: var(--muted);
+}
