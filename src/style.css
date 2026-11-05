@@ -1,5 +1,5 @@
 /* ===============================
-   DAN CHAT - MODERN UI
+   WHATSAPP-STYLE CHAT - MODERN UI
 ================================ */
 
 :root[data-theme="dark"] {
@@ -48,6 +48,7 @@ body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
+  overflow: hidden;
 }
 
 button {
@@ -235,7 +236,7 @@ header button:hover {
   background: var(--panel2);
 }
 
-/* FRIEND LIST - VERTICAL */
+/* FRIEND LIST */
 
 .list {
   flex: 1;
@@ -256,8 +257,6 @@ header button:hover {
   background: var(--line);
   border-radius: 10px;
 }
-
-/* Each friend gets a separate vertical row */
 
 .row {
   display: flex;
@@ -397,40 +396,56 @@ header button:hover {
   font-weight: 800;
 }
 
-/* CHAT MESSAGES */
+/* ===== WHATSAPP STYLE MESSAGES ===== */
 
 .msgs {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  gap: 6px;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: 14px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  overflow-x: hidden;
+  padding: 12px 10px;
   background: var(--bg);
 }
 
 .bubble {
-  max-width: 82%;
-  padding: 9px 11px 20px;
-  border-radius: 13px;
+  display: block;
+  width: fit-content;
+  max-width: 78%;
+  padding: 7px 10px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.35;
   position: relative;
   word-wrap: break-word;
-  line-height: 1.45;
-  font-size: 14px;
-  box-shadow: 0 2px 5px rgba(0,0,0,.06);
+  box-shadow: 0 1px 1px rgba(0,0,0,.12);
 }
 
+/* Meri message: RIGHT side */
 .bubble.me {
-  align-self: flex-end;
+  align-self: flex-end !important;
+  margin-left: auto;
   background: var(--me);
   border-top-right-radius: 3px;
 }
 
+/* Samne wale ki message: LEFT side */
 .bubble.them {
-  align-self: flex-start;
+  align-self: flex-start !important;
+  margin-right: auto;
   background: var(--them);
   border-top-left-radius: 3px;
+}
+
+.bubble .t {
+  position: absolute;
+  right: 8px;
+  bottom: 3px;
+  font-size: 11px;
+  color: var(--muted);
 }
 
 .bubble img {
@@ -449,14 +464,6 @@ header button:hover {
   color: var(--green);
   font-weight: 800;
   margin-bottom: 3px;
-}
-
-.t {
-  position: absolute;
-  right: 8px;
-  bottom: 3px;
-  font-size: 10px;
-  color: var(--muted);
 }
 
 .del {
@@ -656,53 +663,4 @@ header button:hover {
     min-width: 40px;
     height: 40px;
   }
-}
-/* ===== WHATSAPP STYLE MESSAGES ===== */
-.msgs {
-  display: flex !important;
-  flex-direction: column !important;
-  flex-wrap: nowrap !important;
-  gap: 6px;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 12px 10px;
-}
-
-.bubble {
-  display: block;
-  width: fit-content;
-  max-width: 78%;
-  padding: 7px 10px 20px;
-  border-radius: 12px;
-  font-size: 14px;
-  line-height: 1.35;
-  position: relative;
-  word-wrap: break-word;
-  box-shadow: 0 1px 1px rgba(0,0,0,.12);
-}
-
-/* Meri message: RIGHT side */
-.bubble.me {
-  align-self: flex-end !important;
-  margin-left: auto;
-  background: var(--me);
-  border-top-right-radius: 3px;
-}
-
-/* Samne wale ki message: LEFT side */
-.bubble.them {
-  align-self: flex-start !important;
-  margin-right: auto;
-  background: var(--them);
-  border-top-left-radius: 3px;
-}
-
-.bubble .t {
-  position: absolute;
-  right: 8px;
-  bottom: 3px;
-  font-size: 11px;
-  color: var(--muted);
 }
