@@ -1,81 +1,68 @@
-<<<<<<< Updated upstream
-/* ===============================
-   WHATSAPP-STYLE CHAT - MODERN UI
-================================ */
+/* ============================================================
+   MODERN WHATSAPP-STYLE CHAT — REDESIGNED
+   ============================================================ */
 
+/* ---------- THEME TOKENS ---------- */
 :root[data-theme="dark"] {
-  --bg: #080f14;
+  --bg: #0b141a;
+  --chat-bg: #0b141a;
   --panel: #111b21;
   --panel2: #18252d;
   --line: #26343d;
   --text: #e9edef;
-  --muted: #91a0a9;
-  --me: #075e50;
+  --muted: #8696a0;
+  --me: #005c4b;
   --them: #202c33;
   --green: #25d366;
+  --green-dark: #00a884;
+  --bubble-me: #005c4b;
+  --bubble-them: #202c33;
+  --bubble-shadow: 0 1px 0.5px rgba(0,0,0,.13);
+  --tail-me: #005c4b;
+  --tail-them: #202c33;
   --shadow: 0 8px 25px rgba(0,0,0,.20);
 }
 
-=======
-/* =====================================================
-   DAN CHAT  -  WhatsApp style UI (same class names)
-   Replace the whole of src/style.css with this file.
-===================================================== */
-
-/* ---------- THEMES ---------- */
-:root,
->>>>>>> Stashed changes
 :root[data-theme="light"] {
-  --bg: #efeae2;          /* chat wallpaper */
-  --wall-dot: rgba(11, 20, 26, .045);
+  --bg: #efeae2;
+  --chat-bg: #efeae2;
   --panel: #ffffff;
-  --panel2: #f0f2f5;      /* hover / chips */
-  --line: #e9edef;
+  --panel2: #f4f8f7;
+  --line: #e4eaed;
   --text: #111b21;
   --muted: #667781;
   --me: #d9fdd3;
   --them: #ffffff;
-  --head: #008069;        /* top bar */
-  --head-text: #ffffff;
-  --green: #00a884;
-  --accent: #25d366;
-  --tick: #53bdeb;
-  --chip: #ffffff;
-  --shadow: 0 1px 2px rgba(11, 20, 26, .16);
+  --green: #16b85c;
+  --green-dark: #00a884;
+  --bubble-me: #d9fdd3;
+  --bubble-them: #ffffff;
+  --bubble-shadow: 0 1px 0.5px rgba(0,0,0,.13);
+  --tail-me: #d9fdd3;
+  --tail-them: #ffffff;
+  --shadow: 0 8px 25px rgba(20,50,60,.07);
 }
 
-:root[data-theme="dark"] {
-  --bg: #0b141a;
-  --wall-dot: rgba(255, 255, 255, .035);
-  --panel: #111b21;
-  --panel2: #202c33;
-  --line: #222d34;
-  --text: #e9edef;
-  --muted: #8696a0;
-  --me: #005c4b;
-  --them: #202c33;
-  --head: #202c33;
-  --head-text: #e9edef;
-  --green: #00a884;
-  --accent: #25d366;
-  --tick: #53bdeb;
-  --chip: #182229;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .45);
+:root {
+  --radius: 16px;
+  --green: #25d366;
 }
 
-/* ---------- BASE ---------- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html, body, #app { height: 100%; width: 100%; }
+html, body, #app {
+  height: 100%;
+  width: 100%;
+}
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
-  background: var(--panel2);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
   color: var(--text);
-<<<<<<< Updated upstream
-=======
-  -webkit-tap-highlight-color: transparent;
->>>>>>> Stashed changes
   overflow: hidden;
 }
 
@@ -85,377 +72,362 @@ button {
   background: none;
   border: 0;
   cursor: pointer;
-  transition: background .15s ease, transform .12s ease, opacity .15s ease;
+  transition: .2s ease;
 }
-button:active { transform: scale(.95); }
 
-input { font: inherit; color: var(--text); }
-input::placeholder { color: var(--muted); }
-
-button:focus-visible,
-input:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
-
-.g { color: var(--accent); }
-
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-thumb { background: var(--line); border-radius: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-
-/* ---------- LOGIN / SIGNUP ---------- */
-.auth {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 11vh 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  text-align: center;
+input {
+  font: inherit;
+  color: var(--text);
 }
-.auth .logo {
-  width: 84px; height: 84px;
-  margin: 0 auto;
-  border-radius: 26px;
-  background: linear-gradient(145deg, #25d366, #008069);
-  display: grid; place-items: center;
-  font-size: 40px;
-  box-shadow: 0 12px 30px rgba(0, 168, 132, .3);
-}
-.auth h1 { font-size: 32px; font-weight: 800; letter-spacing: -.5px; }
-.sub { color: var(--muted); margin-bottom: 6px; }
-.auth input {
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  outline: none;
-}
-.auth input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(0, 168, 132, .15); }
-.err { color: #f15c6d; font-size: 13px; min-height: 16px; }
 
-.primary {
-  background: var(--green);
-  color: #fff;
-  font-weight: 700;
-  padding: 14px;
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0, 168, 132, .25);
+.g {
+  color: var(--green);
 }
-.primary:hover { filter: brightness(1.06); }
-.primary.small { margin: 8px 12px; padding: 10px; }
-.link { color: var(--green); font-size: 14px; font-weight: 600; }
 
-/* ---------- APP SHELL ---------- */
+/* ---------- SCREEN ---------- */
 .screen {
   height: 100%;
-  height: 100dvh;
   display: flex;
   flex-direction: column;
-  width: 100%;
   max-width: 760px;
   margin: 0 auto;
-  background: var(--panel);
+  background: var(--chat-bg);
   overflow: hidden;
-  position: relative;
-}
-@media (min-width: 800px) {
-  .screen { box-shadow: 0 0 0 1px var(--line), 0 10px 40px rgba(0, 0, 0, .15); }
+  box-shadow: var(--shadow);
 }
 
-/* ---------- HEADER (WhatsApp green bar) ---------- */
+/* ---------- HEADER ---------- */
 header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  min-height: 60px;
-  padding: 10px 12px;
-  padding-top: calc(10px + env(safe-area-inset-top, 0px));
-  background: var(--head);
-  color: var(--head-text);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
-  z-index: 5;
-}
-header h2 { flex: 1; font-size: 21px; font-weight: 800; letter-spacing: -.3px; }
-header button { font-size: 20px; padding: 8px 10px; border-radius: 50%; color: inherit; }
-header button:hover { background: rgba(255, 255, 255, .14); }
-.hbtns { display: flex; align-items: center; gap: 2px; }
-
-.htitle { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; line-height: 1.2; }
-.htitle b, .htitle strong { font-size: 16px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.htitle small { color: rgba(255, 255, 255, .78); font-size: 12px; }
-:root[data-theme="dark"] .htitle small { color: var(--muted); }
-
-/* ---------- SEARCH ---------- */
-.searchbar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: var(--panel);
-}
-.searchbar input {
-  flex: 1;
-  min-width: 0;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 20px;
-  border: 0;
-  background: var(--panel2);
-  outline: none;
-  font-size: 14px;
-}
-.searchbar input:focus { box-shadow: 0 0 0 2px var(--green); }
-.searchbar button {
-  height: 40px;
-  padding: 0 18px;
-  border-radius: 20px;
-  background: var(--green);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-}
-.searchbar button:hover { filter: brightness(1.06); }
-
-<<<<<<< Updated upstream
-/* FRIEND LIST */
-=======
-/* ---------- TABS (Chats | Groups | + Group) ---------- */
-.tabs {
-  display: flex;
-  flex: none;
+  gap: 12px;
+  padding: 10px 14px;
+  padding-top: calc(10px + env(safe-area-inset-top,0px));
   background: var(--panel);
   border-bottom: 1px solid var(--line);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  min-height: 60px;
+  z-index: 10;
 }
-.tabs button {
-  flex: 1;
-  padding: 13px 6px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--muted);
-  border-radius: 0;
-}
-.tabs button:hover { background: var(--panel2); }
-.tabs button.on { color: var(--green); box-shadow: inset 0 -3px 0 var(--green); }
->>>>>>> Stashed changes
 
-/* ---------- CHAT LIST (vertical, one row per friend) ---------- */
-.list {
+header h2 {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -.2px;
+  line-height: 1.2;
+}
+
+header button {
+  font-size: 20px;
+  padding: 7px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+header button:hover {
+  background: var(--panel2);
+}
+
+.hbtns {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.htitle {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background: var(--panel);
+  gap: 2px;
+  min-width: 0;
 }
 
-<<<<<<< Updated upstream
-.list::-webkit-scrollbar,
-.msgs::-webkit-scrollbar {
-  width: 4px;
-}
-
-.list::-webkit-scrollbar-thumb,
-.msgs::-webkit-scrollbar-thumb {
-  background: var(--line);
-  border-radius: 10px;
-}
-
-=======
->>>>>>> Stashed changes
-.row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  gap: 14px;
-  padding: 0 16px;
-  min-height: 74px;
-  cursor: pointer;
-  position: relative;
-  transition: background .15s ease;
-}
-.row:hover { background: var(--panel2); }
-.row:active { background: var(--line); }
-/* divider starts after the avatar, just like WhatsApp */
-.row::after {
-  content: '';
-  position: absolute;
-  left: 78px; right: 0; bottom: 0;
-  height: 1px;
-  background: var(--line);
-}
-
-.avatar {
-  position: relative;
-  width: 49px; height: 49px; min-width: 49px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #2fb98a, #0c7a5f);
-  color: #fff;
-  display: grid; place-items: center;
-  font-size: 19px;
-  font-weight: 700;
-  flex: none;
-  text-transform: uppercase;
-}
-.avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
-.avatar.sm { width: 38px; height: 38px; min-width: 38px; font-size: 15px; }
-.avatar.online::after {
-  content: '';
-  position: absolute;
-  right: 0; bottom: 0;
-  width: 13px; height: 13px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2.5px solid var(--panel);
-}
-.avbtn { padding: 0; border-radius: 50%; }
-
-.meta { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; padding: 12px 0; }
-.top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.top b, .top strong {
-  font-size: 16px; font-weight: 600;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.time { flex: none; color: var(--muted); font-size: 12px; white-space: nowrap; }
-.last {
-  color: var(--muted);
-<<<<<<< Updated upstream
-  font-size: 13px;
+.htitle h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.empty {
-  text-align: center;
+.htitle small {
   color: var(--muted);
-  padding: 45px 20px;
-  line-height: 1.8;
+  font-size: 12px;
+  line-height: 1.2;
 }
 
-/* TABS */
-
-.tabs {
-  display: flex;
-  background: var(--panel);
-  border-top: 1px solid var(--line);
-  padding: 5px 4px;
-  padding-bottom: calc(5px + env(safe-area-inset-bottom,0px));
+/* ---------- AVATAR ---------- */
+.avatar {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#25d366,#087f62);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex: none;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
 }
 
-.tabs button {
-  flex: 1;
-  padding: 11px 5px;
-  color: var(--muted);
-  font-size: 13px;
-  border-radius: 12px;
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
-.tabs button.on {
-  color: var(--green);
-  background: var(--panel2);
-  font-weight: 800;
+.avatar.sm {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  font-size: 14px;
 }
 
-/* ===== WHATSAPP STYLE MESSAGES ===== */
+.avatar.online::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #25d366;
+  border: 2px solid var(--panel);
+}
 
+.avbtn {
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* ---------- CHAT AREA ---------- */
 .msgs {
-  display: flex !important;
-  flex-direction: column !important;
-  flex-wrap: nowrap !important;
-  gap: 6px;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 12px 10px;
-  background: var(--bg);
+  padding: 12px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--chat-bg);
+  scroll-behavior: smooth;
 }
 
+.msgs::-webkit-scrollbar {
+  width: 5px;
+}
+
+.msgs::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 10px;
+}
+
+.msgs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- MESSAGE BUBBLES ---------- */
+
+/* Base bubble */
 .bubble {
-  display: block;
-  width: fit-content;
-  max-width: 78%;
-  padding: 7px 10px 20px;
-  border-radius: 12px;
-  font-size: 14px;
-  line-height: 1.35;
   position: relative;
+  max-width: 75%;
+  padding: 7px 10px 8px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  line-height: 1.4;
   word-wrap: break-word;
-  box-shadow: 0 1px 1px rgba(0,0,0,.12);
+  overflow-wrap: break-word;
+  box-shadow: var(--bubble-shadow);
+  animation: bubbleIn .18s ease-out;
 }
 
-/* Meri message: RIGHT side */
+@keyframes bubbleIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- MY MESSAGE (RIGHT) --- */
 .bubble.me {
   align-self: flex-end !important;
   margin-left: auto;
-  background: var(--me);
-  border-top-right-radius: 3px;
+  margin-right: 0;
+  background: var(--bubble-me);
+  color: var(--text);
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
 }
 
-/* Samne wale ki message: LEFT side */
+/* Right-side tail (my message) */
+.bubble.me::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -7px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid var(--tail-me);
+  border-right: 10px solid transparent;
+  border-bottom: 0 solid transparent;
+}
+
+/* --- FRIEND'S MESSAGE (LEFT) --- */
 .bubble.them {
   align-self: flex-start !important;
   margin-right: auto;
-  background: var(--them);
-  border-top-left-radius: 3px;
+  margin-left: 0;
+  background: var(--bubble-them);
+  color: var(--text);
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
+/* Left-side tail (friend's message) */
+.bubble.them::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -7px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid var(--tail-them);
+  border-left: 10px solid transparent;
+  border-bottom: 0 solid transparent;
+}
+
+/* ---------- MESSAGE TEXT ---------- */
+.bubble .msg-text {
+  display: block;
+  padding-right: 38px; /* room for timestamp */
+  padding-bottom: 4px;
+}
+
+/* ---------- TIMESTAMP ---------- */
 .bubble .t {
   position: absolute;
   right: 8px;
-  bottom: 3px;
-  font-size: 11px;
+  bottom: 5px;
+  font-size: 10.5px;
   color: var(--muted);
+  letter-spacing: .2px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
+.bubble.me .t {
+  color: rgba(233, 237, 239, .65);
+}
+
+:root[data-theme="light"] .bubble.me .t {
+  color: rgba(17, 27, 33, .55);
+}
+
+/* Double-check icon for sent messages */
+.bubble.me .t::after {
+  content: '✓✓';
+  font-size: 11px;
+  color: #53bdeb;
+  margin-left: 2px;
+  letter-spacing: -2px;
+}
+
+/* ---------- MEDIA ---------- */
 .bubble img {
-  max-width: 250px;
+  max-width: 260px;
   width: 100%;
-=======
-  font-size: 14px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 4px;
 }
 
-/* unread: add class "unread" on .row, and <span class="badge">3</span> */
-.row.unread .time { color: var(--accent); font-weight: 600; }
-.row.unread .last { color: var(--text); font-weight: 600; }
-.badge {
-  min-width: 20px; height: 20px;
-  padding: 0 6px;
->>>>>>> Stashed changes
-  border-radius: 10px;
-  background: var(--accent);
-  color: #072e1a;
+.bubble audio {
+  max-width: 220px;
+  margin-bottom: 4px;
+}
+
+.bubble video {
+  max-width: 260px;
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ---------- WHO (group sender name) ---------- */
+.who {
   font-size: 12px;
+  color: var(--green);
   font-weight: 700;
-  display: inline-grid; place-items: center;
+  margin-bottom: 2px;
+  letter-spacing: .2px;
 }
 
-<<<<<<< Updated upstream
+/* ---------- DELETE BUTTON ---------- */
 .del {
   position: absolute;
-  left: 8px;
-  bottom: 2px;
+  left: 6px;
+  bottom: 4px;
   font-size: 11px;
-  opacity: .55;
-  padding: 0;
+  opacity: 0;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: var(--muted);
+  transition: opacity .2s ease;
+  line-height: 1;
+}
+
+.bubble:hover .del {
+  opacity: .5;
 }
 
 .del:hover {
-  opacity: 1;
+  opacity: 1 !important;
+  background: rgba(0,0,0,.15);
 }
 
-/* MESSAGE COMPOSER */
+/* ---------- DATE DIVIDER ---------- */
+.date-divider {
+  align-self: center;
+  margin: 10px 0 6px;
+  background: var(--panel2);
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 8px;
+  letter-spacing: .2px;
+  box-shadow: var(--bubble-shadow);
+}
 
+/* ---------- COMPOSER ---------- */
 .composer {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px;
-  padding-bottom: calc(9px + env(safe-area-inset-bottom,0px));
+  gap: 6px;
+  padding: 8px 10px;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom,0px));
   background: var(--panel);
   border-top: 1px solid var(--line);
 }
@@ -463,24 +435,33 @@ header button:hover { background: rgba(255, 255, 255, .14); }
 .composer #text {
   flex: 1;
   min-width: 0;
-  padding: 12px 15px;
-  border-radius: 25px;
+  padding: 11px 16px;
+  border-radius: 24px;
   border: 1px solid var(--line);
   background: var(--bg);
   outline: none;
-  font-size: 14px;
+  font-size: 14.5px;
+  transition: border-color .2s ease;
 }
 
 .composer #text:focus {
   border-color: var(--green);
+  background: var(--panel);
+}
+
+.composer #text::placeholder {
+  color: var(--muted);
 }
 
 .icon {
-  font-size: 20px;
+  font-size: 19px;
   cursor: pointer;
   padding: 7px;
   border-radius: 50%;
   flex: none;
+  display: grid;
+  place-items: center;
+  line-height: 1;
 }
 
 .icon:hover {
@@ -489,382 +470,114 @@ header button:hover { background: rgba(255, 255, 255, .14); }
 
 .icon.rec {
   background: #e53935;
+  color: #fff;
   border-radius: 50%;
   animation: pulse 1s infinite;
 }
 
 .send {
-  width: 43px;
-  min-width: 43px;
-  height: 43px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--green);
-  color: #04230f;
+  background: var(--green-dark);
+  color: #fff;
   font-size: 18px;
   font-weight: 800;
-  box-shadow: 0 4px 12px rgba(37,211,102,.2);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 8px rgba(0,168,132,.25);
+  transition: transform .15s ease, background .2s ease;
 }
 
 .send:hover {
   transform: scale(1.06);
+  background: var(--green);
+}
+
+.send:active {
+  transform: scale(.95);
 }
 
 @keyframes pulse {
   50% { opacity: .4; }
 }
 
-/* FIND PEOPLE / PROFILE */
-
-.hint {
-  color: var(--muted);
+/* ---------- EMPTY STATE ---------- */
+.empty {
   text-align: center;
-  padding: 12px 20px;
-  font-size: 14px;
-}
-
-.sect {
-  padding: 14px 15px 7px;
-  color: var(--green);
-  font-weight: 800;
-  font-size: 13px;
-}
-
-.sect small {
   color: var(--muted);
-  font-weight: 400;
-}
-=======
-.empty { text-align: center; color: var(--muted); padding: 56px 24px; line-height: 1.7; }
->>>>>>> Stashed changes
-
-.hint { color: var(--muted); text-align: center; padding: 12px 20px; font-size: 14px; }
-.sect { padding: 16px 16px 6px; color: var(--green); font-weight: 700; font-size: 14px; }
-.sect small { color: var(--muted); font-weight: 400; }
-.msgbtn {
-  color: var(--green); font-size: 13px; font-weight: 700;
-  padding: 7px 14px; border-radius: 16px; background: var(--panel2);
-}
-.msgbtn:hover { background: var(--line); }
-
-<<<<<<< Updated upstream
-.profile {
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: var(--panel);
-  flex: 1;
-  overflow-y: auto;
+  padding: 45px 20px;
+  line-height: 1.8;
 }
 
-.profile label {
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 7px;
-}
-
-.profile input {
-  padding: 13px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: var(--bg);
-  outline: none;
-}
-
-.profile input:focus {
-  border-color: var(--green);
-}
-
-.bigav {
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 9px;
-  cursor: pointer;
-  color: var(--green);
-  font-size: 13px;
-  margin: 0;
-}
-
-.bigav .avatar {
-  width: 112px;
-  height: 112px;
-  min-width: 112px;
-  font-size: 42px;
-}
-
-/* MOBILE RESPONSIVE */
-
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 480px) {
   .screen {
     max-width: 100%;
   }
 
   header {
-    padding-left: 13px;
-    padding-right: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: 56px;
   }
 
-  header h2 {
-    font-size: 19px;
-  }
-
-  .row {
-    min-height: 73px;
-    padding: 11px 13px;
+  .htitle h2 {
+    font-size: 15px;
   }
 
   .bubble {
-    max-width: 88%;
+    max-width: 82%;
+    font-size: 14px;
+    padding: 6px 9px 7px;
+  }
+
+  .bubble .msg-text {
+    padding-right: 34px;
+  }
+
+  .msgs {
+    padding: 10px 12px 6px;
+    gap: 3px;
   }
 
   .composer {
-    gap: 5px;
+    gap: 4px;
     padding-left: 6px;
     padding-right: 6px;
   }
 
   .composer #text {
-    padding: 11px 12px;
+    padding: 10px 14px;
+    font-size: 14px;
   }
 
   .icon {
     padding: 5px;
-    font-size: 19px;
+    font-size: 18px;
   }
 
   .send {
     width: 40px;
     min-width: 40px;
     height: 40px;
+    font-size: 17px;
   }
-=======
-/* ---------- MESSAGES (WhatsApp wallpaper + bubbles) ---------- */
-.msgs {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  gap: 3px;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 12px 10px 8px;
-  scroll-behavior: smooth;
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(var(--wall-dot) 1.4px, transparent 1.6px),
-    radial-gradient(var(--wall-dot) 1.4px, transparent 1.6px);
-  background-size: 26px 26px;
-  background-position: 0 0, 13px 13px;
+
+  .bubble.me::before,
+  .bubble.them::before {
+    display: none; /* hide tails on very small screens for a cleaner look */
+  }
 }
 
-.bubble {
-  display: block;
-  width: fit-content;
-  min-width: 74px;
-  max-width: 80%;
-  padding: 6px 9px 17px;
-  border-radius: 8px;
-  position: relative;
-  font-size: 14.5px;
-  line-height: 1.38;
-  word-wrap: break-word;
-  overflow-wrap: anywhere;
-  box-shadow: var(--shadow);
-  animation: pop .16s ease-out;
-}
-/* a little extra gap when sender changes */
-.bubble.me + .bubble.them,
-.bubble.them + .bubble.me { margin-top: 8px; }
+/* ---------- LARGE SCREENS ---------- */
+@media (min-width: 761px) {
+  .bubble {
+    max-width: 65%;
+  }
 
-.bubble.me {
-  align-self: flex-end;
-  margin-left: auto;
-  background: var(--me);
-  border-top-right-radius: 0;
-}
-.bubble.them {
-  align-self: flex-start;
-  margin-right: auto;
-  background: var(--them);
-  border-top-left-radius: 0;
-}
-
-/* bubble tails */
-.bubble.me::before,
-.bubble.them::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 9px; height: 12px;
-}
-.bubble.me::before {
-  right: -8px;
-  background: var(--me);
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-}
-.bubble.them::before {
-  left: -8px;
-  background: var(--them);
-  clip-path: polygon(0 0, 100% 0, 100% 100%);
-}
-
-.bubble img { max-width: 250px; width: 100%; border-radius: 6px; display: block; margin-bottom: 2px; }
-.bubble audio { max-width: 230px; height: 38px; display: block; }
-.who { font-size: 12.5px; color: var(--green); font-weight: 700; margin-bottom: 2px; }
-
-.t {
-  position: absolute;
-  right: 8px; bottom: 3px;
-  font-size: 11px;
-  color: var(--muted);
-  display: flex; align-items: center; gap: 3px;
-}
-.bubble.me .t { color: rgba(17, 27, 33, .55); }
-:root[data-theme="dark"] .bubble.me .t { color: rgba(233, 237, 239, .6); }
-.t .tick, .ticks { color: var(--tick); font-size: 12px; letter-spacing: -2px; }
-
-.del {
-  position: absolute;
-  left: 8px; bottom: 2px;
-  font-size: 11px;
-  opacity: 0;
-  padding: 0;
-  transition: opacity .15s ease;
-}
-.bubble:hover .del { opacity: .6; }
-.del:hover { opacity: 1 !important; }
-@media (hover: none) { .del { opacity: .5; } }
-
-/* date chip: <div class="day">Today</div> */
-.day {
-  align-self: center;
-  margin: 10px 0 6px;
-  padding: 5px 12px;
-  border-radius: 8px;
-  background: var(--chip);
-  color: var(--muted);
-  font-size: 12px;
-  box-shadow: var(--shadow);
-}
-
-/* typing: <div class="typing"><i></i><i></i><i></i></div> */
-.typing {
-  align-self: flex-start;
-  display: flex; gap: 4px;
-  padding: 11px 14px;
-  border-radius: 8px;
-  border-top-left-radius: 0;
-  background: var(--them);
-  box-shadow: var(--shadow);
-}
-.typing i {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--muted);
-  animation: blink 1.2s infinite;
-}
-.typing i:nth-child(2) { animation-delay: .2s; }
-.typing i:nth-child(3) { animation-delay: .4s; }
-
-/* ---------- COMPOSER ---------- */
-.composer {
-  display: flex;
-  flex: none;
-  align-items: center;
-  gap: 6px;
-  width: 100%;
-  padding: 7px 8px;
-  padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px));
-  background: var(--panel2);
-}
-.composer #text {
-  flex: 1 1 auto;
-  min-width: 0;
-  width: 0;
-  height: 42px;
-  padding: 0 16px;
-  border-radius: 21px;
-  border: 0;
-  background: var(--panel);
-  outline: none;
-  font-size: 15px;
-  box-shadow: var(--shadow);
-}
-.composer .icon {
-  flex: 0 0 38px;
-  width: 38px; height: 42px;
-  display: grid; place-items: center;
-  font-size: 20px;
-  border-radius: 50%;
-  cursor: pointer;
-  color: var(--muted);
-}
-.composer .icon:hover { background: var(--line); }
-.icon.rec { background: #e53935; color: #fff; animation: pulse 1s infinite; }
-.composer .send {
-  flex: 0 0 44px;
-  width: 44px; min-width: 44px; height: 44px;
-  border-radius: 50%;
-  background: var(--green);
-  color: #fff;
-  font-size: 18px;
-  display: grid; place-items: center;
-  padding: 0;
-  box-shadow: 0 2px 6px rgba(0, 168, 132, .4);
-}
-.composer .send:hover { filter: brightness(1.08); }
-
-/* ---------- PROFILE ---------- */
-.profile {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 24px 20px;
-  background: var(--panel);
-  overflow-y: auto;
-}
-.profile label { color: var(--green); font-size: 13px; font-weight: 600; margin-top: 8px; }
-.profile input {
-  padding: 13px 14px;
-  border-radius: 0;
-  border: 0;
-  border-bottom: 2px solid var(--line);
-  background: transparent;
-  outline: none;
-}
-.profile input:focus { border-bottom-color: var(--green); }
-.bigav {
-  align-self: center;
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  cursor: pointer;
-  color: var(--green);
-  font-size: 13px;
-  font-weight: 600;
-  margin: 0 0 6px;
-}
-.bigav .avatar { width: 120px; height: 120px; min-width: 120px; font-size: 46px; box-shadow: 0 6px 18px rgba(0, 0, 0, .18); }
-
-/* ---------- ANIMATIONS ---------- */
-@keyframes pop   { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: none; } }
-@keyframes pulse { 50% { opacity: .45; } }
-@keyframes blink { 0%, 60%, 100% { opacity: .3; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-}
-
-/* ---------- SMALL PHONES ---------- */
-@media (max-width: 400px) {
-  header h2 { font-size: 19px; }
-  .row { padding: 0 12px; gap: 12px; }
-  .row::after { left: 72px; }
-  .bubble { max-width: 86%; }
-  .composer { gap: 3px; padding-left: 5px; padding-right: 5px; }
-  .composer .icon { flex-basis: 33px; width: 33px; font-size: 19px; }
-  .composer .send { flex-basis: 40px; width: 40px; min-width: 40px; height: 40px; }
->>>>>>> Stashed changes
-}
+  .msgs {
+    padding: 16px 24px 10px;
+  }
+}  isko kaha lago
